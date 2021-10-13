@@ -2,20 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './pages/Home';
 import './index.css';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Tab } from '@headlessui/react';
 
 ReactDOM.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<Switch>
-				<Route exact path="/">
+	<div>
+		<Tab.Group vertical>
+			<Tab.List>
+				<Tab key="home">Home</Tab>
+				<Tab key="main">Main</Tab>
+				<Tab key="telem">Telemetry</Tab>
+			</Tab.List>
+			<Tab.Panels>
+				<Tab.Panel key="home">
 					<Home />
-				</Route>
-				<Route exact path="/jeff">
-					<p>jeff lol</p>
-				</Route>
-			</Switch>
-		</BrowserRouter>
-	</React.StrictMode>,
+				</Tab.Panel>
+				<Tab.Panel key="main">Main panel</Tab.Panel>
+				<Tab.Panel key="telem">Data panel</Tab.Panel>
+			</Tab.Panels>
+		</Tab.Group>
+	</div>,
 	document.getElementById('root')
 );
