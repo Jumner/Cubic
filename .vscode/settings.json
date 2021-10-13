@@ -1,7 +1,7 @@
 {
 	"files.watcherExclude": {
-		"**/.git/**": true,
-		"**/node_modules/**": true,
-		"**/target/**": true
+		"**/.git/**/*": true,
+		"**/node_modules/**/*": true,
+		"**/target/**/*": true
 	}
 }

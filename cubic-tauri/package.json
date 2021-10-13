@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@craco/craco": "^6.3.0",
 		"@headlessui/react": "^1.4.1",
 		"@heroicons/react": "^1.0.4",
 		"@tauri-apps/api": "^1.0.0-beta.8",
@@ -16,8 +17,9 @@
 		"web-vitals": "^1.1.2"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"start": "craco start",
+		"build": "craco build",
+		"eject": "react-scripts eject",
 		"dev": "tauri dev",
 		"bundle": "tauri build",
 		"tauri": "tauri"
@@ -41,6 +43,9 @@
 		]
 	},
 	"devDependencies": {
-		"@tauri-apps/cli": "^1.0.0-beta.10"
+		"@tauri-apps/cli": "^1.0.0-beta.10",
+		"autoprefixer": "^9.8.8",
+		"postcss": "^7.0.39",
+		"tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
 	}
 }
