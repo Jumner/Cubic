@@ -28,8 +28,12 @@ function Main() {
 					'flex items-center p-2 my-6 transition-colors hover:text-white hover:bg-gray-600 duration-200 rounded-lg'
 				}
 			>
-				{/* {React.cloneElement(props.children)} */}
-				{props.children}
+				{React.cloneElement(props.children, {
+					width: '20',
+					height: '20',
+					fill: 'currentColor',
+					className: 'm-auto',
+				})}
 				<span className="mx-4 text-lg font-normal">{props.text}</span>
 			</button>
 		);
@@ -46,28 +50,13 @@ function Main() {
 					</div>
 					<nav className="mt-10 px-6 ">
 						<NavButton num="0" text="Overview">
-							<ChipIcon
-								width="20"
-								height="20"
-								fill="currentColor"
-								className="m-auto"
-							/>
+							<ChipIcon />
 						</NavButton>
 						<NavButton num="1" text="programming">
-							<TerminalIcon
-								width="20"
-								height="20"
-								fill="currentColor"
-								className="m-auto"
-							/>
+							<TerminalIcon />
 						</NavButton>
 						<NavButton num="2" text="Telemetry">
-							<ChartBarIcon
-								width="20"
-								height="20"
-								fill="currentColor"
-								className="m-auto"
-							/>
+							<ChartBarIcon />
 						</NavButton>
 						<NavButton
 							num="3"
@@ -76,21 +65,7 @@ function Main() {
 								setConnected(!Connected);
 							}}
 						>
-							{Connected ? (
-								<CheckCircleIcon
-									width="20"
-									height="20"
-									fill="currentColor"
-									className="m-auto"
-								/>
-							) : (
-								<XCircleIcon
-									width="20"
-									height="20"
-									fill="currentColor"
-									className="m-auto"
-								/>
-							)}
+							{Connected ? <CheckCircleIcon /> : <XCircleIcon />}
 						</NavButton>
 					</nav>
 				</div>
