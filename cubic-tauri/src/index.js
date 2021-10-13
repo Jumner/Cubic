@@ -16,77 +16,65 @@ function Main() {
 	function selected(i) {
 		return i === SideBar ? 'bg-gray-600 text-gray-100 ' : 'text-gray-400 ';
 	}
+	function NavButton(props) {
+		return (
+			<button
+				onClick={() => {
+					setSideBar(props.num);
+					if (props.onClick) props.onClick(); // 😘
+				}}
+				className={
+					selected(props.num) +
+					'flex items-center p-2 my-6 transition-colors hover:text-white hover:bg-gray-600 duration-200 rounded-lg'
+				}
+			>
+				{/* {React.cloneElement(props.children)} */}
+				{props.children}
+				<span className="mx-4 text-lg font-normal">{props.text}</span>
+			</button>
+		);
+	}
 	const pages = [<Home />, <>a</>, <>b</>, <>c</>];
 	const [Connected, setConnected] = useState(false);
 	return (
 		<div className="relative bg-gray-800">
 			<div className="container">
-				<div className="w-72 h-screen float-left bg-gray-800">
+				<div className="w-64 h-screen float-left bg-gray-800">
 					<div className="flex items-center justify-start mx-6 mt-10">
 						<CubeIcon width="30" className="ml-1 text-gray-300" />
 						<span className="text-gray-300 ml-4 text-2xl font-bold">Cubic</span>
 					</div>
 					<nav className="mt-10 px-6 ">
-						<button
-							onClick={() => {
-								setSideBar(0);
-							}}
-							className={
-								selected(0) +
-								'flex items-center p-2 my-6 transition-colors hover:text-white hover:bg-gray-600 duration-200 rounded-lg'
-							}
-						>
+						<NavButton num="0" text="Overview">
 							<ChipIcon
 								width="20"
 								height="20"
 								fill="currentColor"
 								className="m-auto"
 							/>
-							<span className="mx-4 text-lg font-normal">Overview</span>
-						</button>
-						<button
-							onClick={() => {
-								setSideBar(1);
-							}}
-							className={
-								selected(1) +
-								'flex items-center p-2 my-6 transition-colors hover:text-white hover:bg-gray-600 duration-200 rounded-lg'
-							}
-						>
+						</NavButton>
+						<NavButton num="1" text="programming">
 							<TerminalIcon
 								width="20"
 								height="20"
 								fill="currentColor"
 								className="m-auto"
 							/>
-							<span className="mx-4 text-lg font-normal">Programming</span>
-						</button>
-						<button
-							onClick={() => {
-								setSideBar(2);
-							}}
-							className={
-								selected(2) +
-								'flex items-center p-2 my-6 transition-colors hover:text-white hover:bg-gray-600 duration-200 rounded-lg'
-							}
-						>
+						</NavButton>
+						<NavButton num="2" text="Telemetry">
 							<ChartBarIcon
 								width="20"
 								height="20"
 								fill="currentColor"
 								className="m-auto"
 							/>
-							<span className="mx-4 text-lg font-normal">Telemetry</span>
-						</button>
-						<button
+						</NavButton>
+						<NavButton
+							num="3"
+							text="Status"
 							onClick={() => {
-								setSideBar(3);
 								setConnected(!Connected);
 							}}
-							className={
-								selected(3) +
-								'flex items-center p-2 my-6 transition-colors hover:text-white hover:bg-gray-600 duration-200 rounded-lg'
-							}
 						>
 							{Connected ? (
 								<CheckCircleIcon
@@ -103,15 +91,17 @@ function Main() {
 									className="m-auto"
 								/>
 							)}
-
-							<span className="mx-4 text-lg font-normal">Status</span>
-						</button>
+						</NavButton>
 					</nav>
 				</div>
 			</div>
-			{pages[SideBar]}
+			<Page>{pages[SideBar]}</Page>
 		</div>
 	);
+}
+
+function Page(props) {
+	return <div className="h-screen bg-gray-600">{props.children}</div>;
 }
 
 ReactDOM.render(<Main />, document.getElementById('root'));
