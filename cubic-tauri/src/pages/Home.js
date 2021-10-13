@@ -1,16 +1,10 @@
-import React from 'react';
+// import React from 'react';
 import './Home.css';
 
 function Home() {
 	return (
-		<div className="Home bg-blend-color">
-			<p
-				onClick={() => {
-					window.location = '/jeff';
-				}}
-			>
-				testtest
-			</p>
+		<div className="h-screen bg-blue-900">
+			<p onClick={() => {}}>testtest</p>
 		</div>
 	);
 }
