@@ -1,14 +1,25 @@
-import { useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Canvas, useFrame } from 'react-three-fiber';
 import './Home.css';
 
 function Box(props) {
 	const mesh = useRef();
 	useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.004));
+	const [Hovered, setHovered] = useState(false);
+	const colour = Hovered ? 0x60ff00 : 0xff6000;
 	return (
-		<mesh {...props} ref={mesh}>
+		<mesh
+			{...props}
+			ref={mesh}
+			onPointerOver={() => {
+				setHovered(true);
+			}}
+			onPointerOut={() => {
+				setHovered(false);
+			}}
+		>
 			<boxGeometry args={[3, 3, 3]} />
-			<meshStandardMaterial color={0xff6000} />
+			<meshStandardMaterial color={colour} />
 		</mesh>
 	);
 }
