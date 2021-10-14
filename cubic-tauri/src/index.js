@@ -10,7 +10,6 @@ import {
 	XCircleIcon,
 } from '@heroicons/react/solid';
 import './index.css';
-// https://heroicons.dev/
 function Main() {
 	const [SideBar, setSideBar] = useState(0);
 	function selected(i) {
@@ -31,7 +30,10 @@ function Main() {
 				{React.cloneElement(props.children, {
 					width: '20',
 					height: '20',
-					fill: 'currentColor',
+					fill: props.children.props.fill
+						? props.children.props.fill
+						: 'currentColor',
+					// fill: props.children.fill ? props.children.fill : 'currentColor',
 					className: 'm-auto',
 				})}
 				<span className="mx-4 text-lg font-normal">{props.text}</span>
@@ -65,7 +67,11 @@ function Main() {
 								setConnected(!Connected);
 							}}
 						>
-							{Connected ? <CheckCircleIcon /> : <XCircleIcon />}
+							{Connected ? (
+								<CheckCircleIcon fill="#99ff99" />
+							) : (
+								<XCircleIcon fill="#ff9999" />
+							)}
 						</NavButton>
 					</nav>
 				</div>
