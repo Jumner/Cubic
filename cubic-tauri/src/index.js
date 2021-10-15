@@ -16,7 +16,7 @@ import './index.css';
 function Main() {
 	// Tauri
 
-	// const [cubic, setCubic] = useState('0');
+	const [cubic, setCubic] = useState('0');
 
 	useEffect(() => {
 		// Tauri 😍
@@ -25,6 +25,11 @@ function Main() {
 			setConnected(e.payload);
 		});
 		invoke('ping');
+		// Cubic State
+		listen('telemetry', e => {
+			console.log('Received packet!', e);
+			setCubic(e.payload);
+		});
 	}, []);
 
 	// Gui
@@ -64,7 +69,9 @@ function Main() {
 				<div className="w-64 h-screen float-left bg-gray-800">
 					<div className="flex items-center justify-start mx-6 mt-10">
 						<CubeIcon width="30" className="ml-1 text-gray-300" />
-						<span className="text-gray-300 ml-4 text-2xl font-bold">Cubic</span>
+						<span className="text-gray-300 ml-4 text-2xl font-bold">
+							Cubic {cubic}
+						</span>
 					</div>
 					<nav className="mt-10 px-6 ">
 						<NavButton num="0" text="Overview">
