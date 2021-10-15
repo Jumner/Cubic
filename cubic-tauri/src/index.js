@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Home from './pages/Home';
 import {
@@ -8,9 +8,26 @@ import {
 	ChipIcon,
 	CheckCircleIcon,
 	XCircleIcon,
+	ExclamationCircleIcon,
 } from '@heroicons/react/solid';
+import { listen } from '@tauri-apps/api/event';
+import { invoke } from '@tauri-apps/api/tauri';
 import './index.css';
 function Main() {
+	// Tauri
+
+	// const [cubic, setCubic] = useState('0');
+
+	useEffect(() => {
+		// Tauri 😍
+		listen('ping', e => {
+			console.log('Ping!', e);
+			setConnected(e.payload);
+		});
+		invoke('ping');
+	}, []);
+
+	// Gui
 	const [SideBar, setSideBar] = useState(0);
 	function selected(i) {
 		return i === SideBar ? 'bg-gray-600 text-gray-100 ' : 'text-gray-400 ';
@@ -33,7 +50,6 @@ function Main() {
 					fill: props.children.props.fill
 						? props.children.props.fill
 						: 'currentColor',
-					// fill: props.children.fill ? props.children.fill : 'currentColor',
 					className: 'm-auto',
 				})}
 				<span className="mx-4 text-lg font-normal">{props.text}</span>
@@ -41,7 +57,7 @@ function Main() {
 		);
 	}
 	const pages = [<Home />, <>a</>, <>b</>, <>c</>];
-	const [Connected, setConnected] = useState(false);
+	const [Connected, setConnected] = useState(0);
 	return (
 		<div className="relative bg-gray-800">
 			<div className="container">
@@ -60,17 +76,13 @@ function Main() {
 						<NavButton num="2" text="Telemetry">
 							<ChartBarIcon />
 						</NavButton>
-						<NavButton
-							num="3"
-							text="Status"
-							onClick={() => {
-								setConnected(!Connected);
-							}}
-						>
-							{Connected ? (
-								<CheckCircleIcon fill="#99ff99" />
-							) : (
+						<NavButton num="3" text="Status">
+							{Connected === 0 ? (
+								<ExclamationCircleIcon fill="#FFAA88" />
+							) : Connected === 1 ? (
 								<XCircleIcon fill="#ff9999" />
+							) : (
+								<CheckCircleIcon fill="#99ff99" />
 							)}
 						</NavButton>
 					</nav>

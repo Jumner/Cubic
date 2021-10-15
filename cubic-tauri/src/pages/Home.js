@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Canvas, useFrame } from 'react-three-fiber';
 import './Home.css';
 
@@ -35,14 +35,13 @@ function Home() {
 					<Box position={[0, 0, 0]} />
 				</Canvas>
 			</div>
-			<div className="left-64 right-0 absolute bottom-0 h-52">
+			<div className="absolute left-64 right-0 bottom-0 h-52">
 				<div className="flex items-center justify-around h-full">
 					<p onClick={() => {}}>Overview</p>
 					<p onClick={() => {}}>Overview</p>
 					<p onClick={() => {}}>Overview</p>
 				</div>
 			</div>
-			{/* </div> */}
 		</>
 	);
 }
