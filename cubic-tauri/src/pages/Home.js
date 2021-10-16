@@ -27,7 +27,7 @@ function Box(props) {
 function Home() {
 	return (
 		<>
-			<div className="absolute top-0 bottom-52 right-0 left-64">
+			<div className="top-0 bottom-52 right-0 left-64">
 				<Canvas>
 					<ambientLight intensity={0.3} />
 					<spotLight position={[0, 10, 0]} />

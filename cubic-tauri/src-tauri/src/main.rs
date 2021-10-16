@@ -19,9 +19,9 @@ fn telem(window: tauri::Window) {
   let mut data: u8;
   loop {
     // Poggers infinite loop
-    data = rand::random::<u8>();
-    window.emit("telemetry", data).expect("failed");
-    std::thread::sleep(std::time::Duration::from_millis(100));
+    // data = rand::random::<u8>();
+    // window.emit("telemetry", data).expect("failed");
+    // std::thread::sleep(std::time::Duration::from_millis(100));
   }
 }
 
