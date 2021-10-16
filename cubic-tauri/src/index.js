@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Home from './pages/Home';
+import Status from './pages/Status';
 import {
 	CubeIcon,
 	ChartBarIcon,
@@ -13,11 +14,10 @@ import {
 import { listen } from '@tauri-apps/api/event';
 import { invoke } from '@tauri-apps/api/tauri';
 import './index.css';
-import Status from './pages/Status';
 function Main() {
 	// Tauri
 
-	const [cubic, setCubic] = useState('0');
+	const [cubic, setCubic] = useState(0);
 
 	useEffect(() => {
 		// Tauri 😍
@@ -68,7 +68,12 @@ function Main() {
 		);
 	}
 	const [Connected, setConnected] = useState(0);
-	const pages = [<Home />, <>a</>, <>b</>, <Status connected={Connected} />];
+	const pages = [
+		<Home />,
+		<>a</>,
+		<>b</>,
+		<Status connected={Connected} cubic={cubic} />,
+	];
 	return (
 		<div className="relative bg-gray-800">
 			<div className="container">

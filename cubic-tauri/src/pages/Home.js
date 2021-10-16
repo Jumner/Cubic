@@ -26,8 +26,8 @@ function Box(props) {
 
 function Home() {
 	return (
-		<>
-			<div className="top-0 bottom-52 right-0 left-64">
+		<div className="flex h-full relative">
+			<div className="absolute h-full w-full">
 				<Canvas>
 					<ambientLight intensity={0.3} />
 					<spotLight position={[0, 10, 0]} />
@@ -35,14 +35,14 @@ function Home() {
 					<Box position={[0, 0, 0]} />
 				</Canvas>
 			</div>
-			<div className="absolute left-64 right-0 bottom-0 h-52">
+			<div className="absolute w-full bottom-0 h-52">
 				<div className="flex items-center justify-around h-full">
 					<p onClick={() => {}}>Overview</p>
 					<p onClick={() => {}}>Overview</p>
 					<p onClick={() => {}}>Overview</p>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
 

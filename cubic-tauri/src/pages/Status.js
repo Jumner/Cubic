@@ -1,6 +1,7 @@
 import { BanIcon, ChipIcon } from '@heroicons/react/solid';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // Graphs
+import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 //https://recharts.org/en-US/guide/getting-started
 
 function Status(props) {
@@ -55,16 +56,37 @@ function Status(props) {
 	}
 	function Banner() {
 		return (
-			<div className="container bg-green-500 flex items-center text-white text-lg font-bold px-4 py-3 self-start absolute">
+			<div className="container bg-green-500 flex items-center text-white text-lg font-bold px-4 py-3 self-start absolute w-full">
 				<ChipIcon fill="currentColor" className="w-6 h-6 mr-3" />
 				Awesome! Connected to Cubic successfully
 			</div>
 		);
 	}
+	const [data, setData] = useState([]);
+	function addData(data) {
+		setData(oldData => {
+			let newData = [...oldData, data];
+			if (newData.length > 5) {
+				newData.shift();
+			}
+			return newData;
+		});
+	}
 	function Graph() {
+		useEffect(() => {
+			if (data.length === 0 || props.cubic !== data[data.length - 1].a) {
+				console.log('what');
+				addData({ name: 't', a: props.cubic });
+			}
+		}, [props.cubic]);
 		return (
-			<div className="bg-gray-800 w-72 shadow-lg rounded-xl p-4 flex m-auto">
-				chart moment
+			<div className="bg-gray-800 shadow-lg rounded-xl p-4 flex m-auto">
+				<LineChart width={200} height={200} data={data}>
+					<Line type="monotone" dataKey="a" dot={false} />
+					<YAxis />
+					<Tooltip />
+					<Legend />
+				</LineChart>
 			</div>
 		);
 	}
@@ -81,7 +103,7 @@ function Status(props) {
 		}
 	}
 	return (
-		<div className="flex h-full left-0 right-0 items-center">
+		<div className="flex h-full left-0 right-0 items-center relative">
 			<Ui />
 		</div>
 	);
