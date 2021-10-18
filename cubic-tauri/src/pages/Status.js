@@ -1,7 +1,8 @@
 import { BanIcon, ChipIcon } from '@heroicons/react/solid';
 import React, { useEffect, useState } from 'react';
 // Graphs
-import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
+import { Legend, Line, LineChart, Tooltip, YAxis } from 'recharts';
+import { setTelemCallback } from '../index';
 //https://recharts.org/en-US/guide/getting-started
 
 function Status(props) {
@@ -65,24 +66,34 @@ function Status(props) {
 	const [data, setData] = useState([]);
 	function addData(data) {
 		setData(oldData => {
-			let newData = [...oldData, data];
-			if (newData.length > 5) {
-				newData.shift();
-			}
-			return newData;
+			return [...oldData, data].slice(oldData.length >= 5 ? 1 : 0);
 		});
 	}
 	function Graph() {
-		useEffect(() => {
-			if (data.length === 0 || props.cubic !== data[data.length - 1].a) {
-				console.log('what');
-				addData({ name: 't', a: props.cubic });
+		function telemCallback(val) {
+			if (data.length === 0 || val !== data[data.length - 1].a) {
+				console.log('Added data', val);
+				addData({ name: 't', a: val });
 			}
-		}, [props.cubic]);
+		}
+		useEffect(() => {
+			console.log('mount graph');
+			setTelemCallback('statusGraph', telemCallback);
+		}, []);
 		return (
 			<div className="bg-gray-800 shadow-lg rounded-xl p-4 flex m-auto">
-				<LineChart width={200} height={200} data={data}>
-					<Line type="monotone" dataKey="a" dot={false} />
+				<LineChart
+					width={200}
+					height={200}
+					data={data}
+					margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+				>
+					<Line
+						type="monotone"
+						dataKey="a"
+						dot={false}
+						isAnimationActive={true}
+					/>
 					<YAxis />
 					<Tooltip />
 					<Legend />

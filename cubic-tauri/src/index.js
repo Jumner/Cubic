@@ -14,10 +14,17 @@ import {
 import { listen } from '@tauri-apps/api/event';
 import { invoke } from '@tauri-apps/api/tauri';
 import './index.css';
+
+let recieveTelem = {};
+
+export function setTelemCallback(key, fn) {
+	recieveTelem[key] = fn;
+}
+
 function Main() {
 	// Tauri
 
-	const [cubic, setCubic] = useState(0);
+	// const [cubic, setCubic] = useState(0);
 
 	useEffect(() => {
 		// Tauri 😍
@@ -34,7 +41,10 @@ function Main() {
 		// Cubic State
 		listen('telemetry', e => {
 			console.log('Received packet!', e);
-			setCubic(e.payload);
+			console.log(recieveTelem);
+			for (let key in recieveTelem) {
+				recieveTelem[key](e.payload);
+			}
 		}).catch(browser);
 	}, []);
 
@@ -68,12 +78,7 @@ function Main() {
 		);
 	}
 	const [Connected, setConnected] = useState(0);
-	const pages = [
-		<Home />,
-		<>a</>,
-		<>b</>,
-		<Status connected={Connected} cubic={cubic} />,
-	];
+	const pages = [<Home />, <>a</>, <>b</>, <Status connected={Connected} />];
 	return (
 		<div className="relative bg-gray-800">
 			<div className="container">
