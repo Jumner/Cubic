@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Legend, Line, LineChart, Tooltip, YAxis } from 'recharts';
-import { setTelemCallback } from 'index';
+import { setTelemCallback } from './index';
 
 export function Graph() {
 	const [data, setData] = useState([]);
