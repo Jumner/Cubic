@@ -21,7 +21,7 @@ export function Graph() {
 		setTelemCallback('statusGraph', telemCallback);
 	}, []);
 	return (
-		<div className="bg-gray-800 shadow-lg rounded-xl p-4 flex m-auto">
+		<div className="bg-gray-800 shadow-lg rounded-xl p-4 m-8">
 			<LineChart
 				width={200}
 				height={200}

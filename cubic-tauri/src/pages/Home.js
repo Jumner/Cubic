@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Canvas, useFrame } from 'react-three-fiber';
 import './Home.css';
+import { Graph } from '../graph';
 
 function Box(props) {
 	const mesh = useRef();
@@ -35,11 +36,9 @@ function Home() {
 					<Box position={[0, 0, 0]} />
 				</Canvas>
 			</div>
-			<div className="absolute w-full bottom-0 h-52">
+			<div className="absolute w-full bottom-0">
 				<div className="flex items-center justify-around h-full">
-					<p onClick={() => {}}>Overview</p>
-					<p onClick={() => {}}>Overview</p>
-					<p onClick={() => {}}>Overview</p>
+					<Graph />
 				</div>
 			</div>
 		</div>
