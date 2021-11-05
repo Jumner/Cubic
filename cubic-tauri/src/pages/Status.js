@@ -1,5 +1,8 @@
 import { BanIcon, ChipIcon } from '@heroicons/react/solid';
 import { Graph } from '../graph';
+import { invoke } from '@tauri-apps/api/tauri';
+import { listen } from '@tauri-apps/api/event';
+
 //https://recharts.org/en-US/guide/getting-started
 
 function Status(props) {
@@ -16,7 +19,13 @@ function Status(props) {
 		}
 	}
 	function Button() {
-		if (props.connected !== -1) {
+		if (props.connected === 1) {
+			invoke('bluetooth', { number: 6 }).then(message => {
+				console.log(message);
+			});
+			// .catch(() => {});
+			return 'connect...';
+		} else if (props.connected !== -1) {
 			return (
 				<button
 					type="button"

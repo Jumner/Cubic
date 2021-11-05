@@ -26,6 +26,10 @@ function Main() {
 
 	// const [cubic, setCubic] = useState(0);
 
+	listen('print', e => {
+		console.log(`Rust: ${e.payload}`);
+	});
+
 	useEffect(() => {
 		// Tauri 😍
 		const browser = () => {
@@ -34,7 +38,8 @@ function Main() {
 			setConnected(-1); // Let the ui know
 		};
 		listen('ping', e => {
-			console.log('Ping!', e);
+			// console.log('Ping!', e);
+			console.log('Ping!', e.payload);
 			setConnected(e.payload);
 		}).catch(browser);
 		invoke('ping').catch(browser);
