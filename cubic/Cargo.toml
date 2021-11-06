@@ -6,4 +6,8 @@ edition = "2021"
 [features]
 
 [dependencies]
-blurz = "0.4.0"
+btleplug = "0.9.0"
+rand = "0.8.4"
+# tokio = "1.13.0"
+tokio = { version = "0.2", features = ["full"] }
+uuid = "0.8.2"
