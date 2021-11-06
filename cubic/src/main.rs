@@ -22,7 +22,7 @@ async fn main() -> std::io::Result<()> {
 		.start_scan(ScanFilter::default())
 		.await
 		.expect("Unable to scan");
-	time::delay_for(Duration::from_secs(2)).await;
+	time::sleep(Duration::from_secs(2)).await;
 
 	let cubic = find_cubic(&central).await.expect("Could not find cubic");
 	cubic.connect().await.expect("Could not connect to cubic");

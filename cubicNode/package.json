@@ -1,0 +1,12 @@
+{
+	"name": "cubic",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"dependencies": {
+		"node-ble": "^1.5.0"
+	},
+	"scripts": {
+		"dev": "node index.js"
+	}
+}
