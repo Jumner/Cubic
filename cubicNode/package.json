@@ -4,7 +4,8 @@
 	"main": "index.js",
 	"license": "MIT",
 	"dependencies": {
-		"node-ble": "^1.5.0"
+		"node-gyp": "^8.4.0",
+		"node-bluetooth": "^1.2.6"
 	},
 	"scripts": {
 		"dev": "node index.js"
