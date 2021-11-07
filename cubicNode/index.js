@@ -7,22 +7,18 @@ function sleep(ms) {
 	});
 }
 
-async function setupBle() {
+async function findCubic() {
 	const adapter = await bluetooth.defaultAdapter();
 	if (!(await adapter.isDiscovering())) await adapter.startDiscovery();
-	console.log('Done ble setup');
-	return adapter;
-}
-
-async function connectCubic() {
-	const adapter = await setupBle();
+	await sleep(1000);
+	await adapter.stopDiscovery();
 	let devices = await Promise.all(
 		await (
 			await adapter.devices()
 		).map(async device => {
 			const dev = await adapter.getDevice(device);
 			const name = await dev.getAlias();
-			return { device: dev, name: name };
+			return { name: name, uuid: device };
 		})
 	); // Fuck async js sometimes
 	devices = devices
@@ -31,13 +27,24 @@ async function connectCubic() {
 		})
 		.map(device => {
 			console.log('Cubic found!');
-			return device.device;
+			return device.uuid;
 		});
 	if (devices.length == 0) {
 		throw 'Cubic not found :(';
 	}
 	const cubic = devices[0];
 	console.log(cubic);
+	await connectCubic(cubic).catch(err => {
+		throw err;
+	});
 }
 
-connectCubic();
+async function connectCubic(uuid) {
+	const adapter = await bluetooth.defaultAdapter();
+	const cubic = await adapter.waitDevice(uuid);
+	if (!(await cubic.isPaired())) await cubic.pair();
+}
+
+findCubic().catch(err => {
+	console.log(err);
+});
