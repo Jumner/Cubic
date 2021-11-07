@@ -16,7 +16,7 @@ async function findCubic() {
 		await (
 			await adapter.devices()
 		).map(async device => {
-			const dev = await adapter.getDevice(device);
+			const dev = await adapter.waitDevice(device);
 			const name = await dev.getAlias();
 			return { name: name, uuid: device };
 		})
@@ -42,7 +42,19 @@ async function findCubic() {
 async function connectCubic(uuid) {
 	const adapter = await bluetooth.defaultAdapter();
 	const cubic = await adapter.waitDevice(uuid);
+	console.log(await cubic.toString());
 	if (!(await cubic.isPaired())) await cubic.pair();
+	console.log('Cubic Paired');
+	console.log(await cubic.isConnected());
+	console.log(await (await cubic.gatt()).services());
+	if (!(await cubic.isConnected())) await cubic.connect();
+	console.log('Cubic connected');
+	const gatt = await cubic.gatt();
+	console.log('gatt server created');
+	// print(cubic.pair());
+	console.log('closing down');
+	await cubic.disconnect();
+	destroy();
 }
 
 findCubic().catch(err => {
