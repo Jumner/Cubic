@@ -1,9 +1,16 @@
-const bt = require('node-bluetooth');
+const noble = require('noble');
 
-const device = new bt.DeviceINQ();
-device
-	.on('finished', console.log.bind(console, 'finished'))
-	.on('found', (address, name) => {
-		console.log('Found: ' + address + ': ' + name);
-	})
-	.scan();
+noble.on('stateChange', state => {
+	if (state === 'poweredOn') {
+		console.log('Scanning');
+		noble.startScanning();
+	} else {
+		noble.stopScanning();
+	}
+});
+
+noble.on('discover', device => {
+	noble.stopScanning();
+	const name = device.advertisement.localName;
+	console.log('[' + device.address + ']: ' + name);
+});
