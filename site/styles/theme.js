@@ -6,4 +6,7 @@ const colours = {
 	green: '#73b06f',
 };
 
-export const theme = extendTheme({ colors: colours });
+export const theme = extendTheme({
+	colors: colours,
+	fonts: { heading: 'Rowdies', body: 'Cabin' },
+});
