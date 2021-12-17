@@ -12,8 +12,16 @@ import Page from './components/Page';
 
 export default function Home() {
 	const cancelRef = React.useRef();
-	const [isOpen, setIsOpen] = React.useState(true);
-	const onClose = () => setIsOpen(false);
+	const [isOpen, setIsOpen] = React.useState(false);
+	React.useEffect(() => {
+		if (localStorage.getItem('seen') != 'true') {
+			setIsOpen(true);
+			localStorage.setItem('seen', 'true');
+		}
+	}, []);
+	const onClose = () => {
+		setIsOpen(false);
+	};
 	return (
 		<Page name="Home">
 			<Text>hello, what is going on?</Text>
