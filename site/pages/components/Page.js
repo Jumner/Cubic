@@ -1,10 +1,9 @@
-import { Text } from '@chakra-ui/react';
 import Header from './Header';
 
-export default function Page({ children }) {
+export default function Page({ children, name }) {
 	return (
 		<>
-			<Header />
+			<Header page={name} />
 			{children}
 		</>
 	);
