@@ -22,6 +22,8 @@ export default function Header({ page }) {
 			px="10"
 			justify="space-between"
 			color="white"
+			borderBottom="5px solid"
+			borderColor="site.green.500"
 		>
 			<Heading color="site.green.500">Cubic</Heading>
 			<Flex justify="space-evenly" gap="10">
