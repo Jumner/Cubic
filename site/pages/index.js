@@ -74,7 +74,7 @@ export default function Home() {
 				determined to finish it and I{"'"}m sure there is plenty more that I
 				will learn in this journey.
 			</Text>
-			<Heading>Check out the 3 pillars of Cubic</Heading>
+			<Heading>Check out the 4 pillars of Cubic</Heading>
 			<Flex w="full" justify="space-evenly">
 				<Heading>
 					<Link color="site.green.500" href="design">
@@ -89,6 +89,11 @@ export default function Home() {
 				<Heading>
 					<Link color="site.green.500" href="control">
 						Control
+					</Link>
+				</Heading>
+				<Heading>
+					<Link color="site.green.500" href="challenges">
+						Challenges
 					</Link>
 				</Heading>
 			</Flex>

@@ -39,6 +39,9 @@ export default function Header({ page }) {
 				<NavLink page={page} url="control">
 					Control
 				</NavLink>
+				<NavLink page={page} url="challenges">
+					Challenges
+				</NavLink>
 			</Flex>
 		</Flex>
 	);
