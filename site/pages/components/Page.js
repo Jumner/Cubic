@@ -9,7 +9,7 @@ export default function Page({ children, name }) {
 			justify="space-between"
 			align="center"
 			w="full"
-			h="100vh"
+			h="full"
 		>
 			<Header page={name} />
 			<VStack p="5" w="95%" justify="space-evenly" h="full">
