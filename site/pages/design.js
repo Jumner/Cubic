@@ -32,7 +32,12 @@ export default function Design() {
 				printed in tpu (A rubber like thermoplastic)
 			</Text>
 			<Text>
-				To see how it is assembled, check out this nice loopable gif I made.
+				To see how it was assembled, check out this nice loopable gif I made.
+			</Text>
+			<Text>
+				I then realized that instead of gluing the corners together, they can
+				come apart and allow it to be disassembled into 6 faces. This still
+				shows how it is constructed.
 			</Text>
 			<video muted autoPlay controls loop>
 				<source src="/img/assemblyLoop.webm" />
