@@ -34,6 +34,9 @@ export default function Design() {
 			<Text>
 				To see how it is assembled, check out this nice loopable gif I made.
 			</Text>
+			<video muted autoPlay controls loop>
+				<source src="/img/assemblyLoop.webm" />
+			</video>
 		</Page>
 	);
 }
