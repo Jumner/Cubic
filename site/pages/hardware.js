@@ -100,11 +100,11 @@ export default function Design() {
 				spin up to speed as possible, do you spin it from the edge of the
 				handle, or the head? You want the mass to be as far out as possible so
 				you would hold it by the handle. Same thing here, the mass is as far out
-				as possible so it has a greater inertia. Remember that in a wheel, half
-				of the inertia comes from the outer 30%. The problem is that plastic
-				wheels would not be dense enough to have adequate control. So instead, I
-				got them lasercut out of 304L stainless steel at a local metal shop for
-				pretty cheap.
+				as possible so it has a greater inertia. Remember that in a solid disk,
+				half of the inertia comes from the outer 30%. The problem is that
+				plastic wheels would not be dense enough to have adequate control. So
+				instead, I got them lasercut out of 304L stainless steel at a local
+				metal shop for pretty cheap.
 			</Text>
 		</Page>
 	);
