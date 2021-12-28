@@ -106,6 +106,36 @@ export default function Design() {
 				instead, I got them lasercut out of 304L stainless steel at a local
 				metal shop for pretty cheap.
 			</Text>
+			<Heading>Assembly</Heading>
+			<Text>How the cube was assembled</Text>
+			<Image src="/img/parts.jpg" alt="parts" transform="rotate(90deg)" />
+			<Text>
+				Here are most of the parts laid out. It is missing the wheels as they
+				were being manufactured and the corner covers were not printed yet.
+				Either way, you can see the frame parts, the motors, the voltage
+				converter, the IMU, and arduino, and a bluetooth module so it can send
+				telemetry over bluetooth.
+			</Text>
+			<Text>
+				You can see here how the dovetails snap together. You can also see the
+				gaps in the corners before the covers pull it together tightly.
+			</Text>
+			<Image src="/img/faceAssembly.jpg" alt="Face assembly" />
+			<Text>
+				You can see here it mostly assembled with all the electronics (besides
+				the battery) installed.
+			</Text>
+			<Image src="/img/mostlyAssembled.jpg" alt="Mostly assembled" />
+			<Text>
+				Finally, the TPU corner covers which are glued together. Here you can
+				see how they{"'"}re made
+			</Text>
+			<SimpleGrid columns="2">
+				<Image src="/img/coverFlat.jpg" alt="Flat cover" />
+				<Image src="/img/coverDone.jpg" alt="Done cover" />
+			</SimpleGrid>
+			<Text>Then they just snap overtop of the corners and voila!</Text>
+			<Image src="/img/cubeDone.jpg" alt="cube Done" />
 		</Page>
 	);
 }
