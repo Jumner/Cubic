@@ -1,4 +1,4 @@
-import { Heading, Image, Text } from '@chakra-ui/react';
+import { Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import Page from './components/Page';
 import Render from './../public/img/finalrender.png';
 import MountRender from './../public/img/mountrender.png';
@@ -42,6 +42,71 @@ export default function Design() {
 			<video muted autoPlay controls loop>
 				<source src="/img/assemblyLoop.webm" />
 			</video>
+			<Heading>Now here{"'"}s how it really went</Heading>
+			<Text>How the cube was assembled</Text>
+			<Image
+				src="/img/parts.jpg"
+				alt="parts"
+				transform="rotate(90deg)"
+				borderRadius="2xl"
+			/>
+			<Text>
+				Here are most of the parts laid out. It is missing the wheels as they
+				were being manufactured and the corner covers were not printed yet.
+				Either way, you can see the frame parts, the motors, the voltage
+				converter, the IMU, and arduino, and a bluetooth module so it can send
+				telemetry over bluetooth.
+			</Text>
+			<Text>
+				You can see here how the dovetails snap together. You can also see the
+				gaps in the corners before the covers pull it together tightly.
+			</Text>
+			<Image
+				src="/img/faceAssembly.jpg"
+				alt="Face assembly"
+				w="md"
+				borderRadius="2xl"
+			/>
+			<Text>
+				You can see here it mostly assembled with all the electronics (besides
+				the battery) installed.
+			</Text>
+			<Image
+				src="/img/mostlyAssembled.jpg"
+				alt="Mostly assembled"
+				w="md"
+				borderRadius="2xl"
+			/>
+			<Text>
+				Finally, the TPU corner covers which are glued together. Here you can
+				see how they{"'"}re made
+			</Text>
+			<SimpleGrid columns="2" gap="5">
+				<Image
+					src="/img/coverFlat.jpg"
+					alt="Flat cover"
+					w="md"
+					borderRadius="2xl"
+				/>
+				<Image
+					src="/img/coverDone.jpg"
+					alt="Done cover"
+					w="md"
+					borderRadius="2xl"
+					dropShadow="2xl"
+				/>
+			</SimpleGrid>
+			<Text>Then they just snap overtop of the corners and voila!</Text>
+			<Image
+				src="/img/cubeDone.jpg"
+				alt="cube Done"
+				w="md"
+				borderRadius="2xl"
+			/>
+			<Text>
+				It turned out fantastic! And looking at it still brings me great joy
+				despite the amount of suffering it has put me through.
+			</Text>
 		</Page>
 	);
 }
