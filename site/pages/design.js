@@ -17,17 +17,17 @@ export default function Design() {
 				3d printer has a max size of 120mm
 			</Text>
 			<Text>
-				The solution is to build it in multiple pieces, 112 pieces to be exact.
+				The solution is to print it in multiple pieces, 91 pieces to be exact.
 			</Text>
 			<Text>
-				The Cube is designed to be 2 inner cubes; like a tesseract. This is
-				because the motors are mounted by their face, so a plate needs to
-				connect to the motors and go around the wheels.
+				The Cube is designed to be 2 cubes, one inside the other; like a
+				tesseract. This is because the motors are mounted by their face, so a
+				plate needs to connect to the motors and go around the wheels.
 			</Text>
 			<Heading>Check out this render to see how the motors mount</Heading>
 			<Image src={MountRender.src} w="lg" alt="Mount Render" />
 			<Text>
-				There are then corner pieces that connect the face together ans snap
+				There are then corner pieces that connect the face together and snap
 				together. In order to keep the it from falling apart, corner covers are
 				printed in tpu (A rubber like thermoplastic)
 			</Text>
