@@ -12,7 +12,7 @@ export default function Page({ children, name }) {
 			h="full"
 		>
 			<Header page={name} />
-			<VStack p="5" w="95%" justify="space-evenly" h="full">
+			<VStack p="5" w="95%" justify="space-evenly" h="full" gap="10">
 				{children}
 			</VStack>
 			<Footer />

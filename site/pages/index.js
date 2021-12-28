@@ -7,7 +7,9 @@ import {
 	Button,
 	Flex,
 	Heading,
+	Image,
 	Link,
+	SimpleGrid,
 	Text,
 } from '@chakra-ui/react';
 import React from 'react';
@@ -97,6 +99,15 @@ export default function Home() {
 					</Link>
 				</Heading>
 			</Flex>
+			<SimpleGrid columns="2" gap="5">
+				<Image src="/img/finalrender.png" alt="final render" w="md" />
+				<Image
+					src="/img/cubeDone.jpg"
+					alt="cube done"
+					borderRadius="2xl"
+					w="md"
+				/>
+			</SimpleGrid>
 		</Page>
 	);
 }
